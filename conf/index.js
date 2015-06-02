@@ -24,7 +24,7 @@ module.exports = {
     cdnTag: 'cdn-20150421',
 
     // Domain to use for dev requests to RawGit.
-    devDomain: '192.168.4.200:5000',
+    devDomain: '192.168.14.100:5000',
 
     // Whitelist of file extensions that will be proxied through RawGit. All
     // others will be redirected to raw.githubusercontent.com.
