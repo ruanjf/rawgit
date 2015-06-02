@@ -8,12 +8,15 @@ module.exports = {
     autoThrottle: true,
 
     // Domain to use for CDN requests to RawGit.
-    cdnDomain: 'cdn.rawgit.com',
+    cdnDomain: '192.168.14.100:5000',
 
     // GitHub "username/repo" from which RawGit's own static assets should be
     // loaded via the CDN. Set this to a falsy value to disable loading static
     // assets from the CDN.
     cdnRepo: 'rgrove/rawgit',
+
+    // git repo
+    gitRepo: '192.168.14.100:10080',
 
     // Git tag that points to the GitHub commit from which RawGit's own static
     // assets should be loaded via the CDN. Set this to a falsy value to disable
@@ -21,7 +24,7 @@ module.exports = {
     cdnTag: 'cdn-20150421',
 
     // Domain to use for dev requests to RawGit.
-    devDomain: 'rawgit.com',
+    devDomain: '192.168.4.200:5000',
 
     // Whitelist of file extensions that will be proxied through RawGit. All
     // others will be redirected to raw.githubusercontent.com.

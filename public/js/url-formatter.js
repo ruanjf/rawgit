@@ -7,12 +7,15 @@ var REGEX_GIST_URL = /^(https?):\/\/gist\.github\.com\/(.+?)\/([^\/]+)/i;
 var REGEX_RAW_URL  = /^(https?):\/\/(?:gist|raw)\.github(?:usercontent)?\.com\/([^\/]+\/[^\/]+\/[^\/]+|[0-9A-Za-z-]+\/[0-9a-f]+\/raw)\/(.+)/i;
 var REGEX_REPO_URL = /^(https?):\/\/github\.com\/(.+?)\/(.+?)\/(?:(?:blob|raw)\/)?(.+?\/.+)/i;
 
+var REGEX_GITLAB_REPO_URL = /^(https?):\/\/192\.168.+?\/(.+?)\/(.+?)\/(.+?\/.+?)\/(.+?\/.+)/i;
+
 var devEl  = doc.getElementById('url-dev');
 var prodEl = doc.getElementById('url-prod');
 var urlEl  = doc.getElementById('url');
 
 urlEl.addEventListener('input', function () {
     var url = decodeURIComponent(urlEl.value.trim());
+    url = url.replace(/^https:/, 'http:');
 
     if (REGEX_RAW_URL.test(url)) {
         urlEl.classList.remove('invalid');
@@ -29,6 +32,15 @@ urlEl.addEventListener('input', function () {
 
         devEl.value  = encodeURI(url.replace(REGEX_REPO_URL, '$1://' + devDomain + '/$2/$3/$4'));
         prodEl.value = encodeURI(url.replace(REGEX_REPO_URL, '$1://' + cdnDomain + '/$2/$3/$4'));
+
+        devEl.classList.add('valid');
+        prodEl.classList.add('valid');
+    } else if (REGEX_GITLAB_REPO_URL.test(url)) { // gitlab
+        urlEl.classList.remove('invalid');
+        urlEl.classList.add('valid');
+
+        devEl.value  = encodeURI(url.replace(REGEX_GITLAB_REPO_URL, '$1://' + devDomain + '/$2/$3/$4/$5'));
+        prodEl.value = encodeURI(url.replace(REGEX_GITLAB_REPO_URL, '$1://' + cdnDomain + '/$2/$3/$4/$5'));
 
         devEl.classList.add('valid');
         prodEl.classList.add('valid');
