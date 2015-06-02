@@ -15,8 +15,8 @@ module.exports = {
     // assets from the CDN.
     cdnRepo: 'rgrove/rawgit',
 
-    // git repo
-    gitRepo: '192.168.14.100:10080',
+    // gitlab repo
+    gitlabRepo: '192.168.14.100:10080',
 
     // Git tag that points to the GitHub commit from which RawGit's own static
     // assets should be loaded via the CDN. Set this to a falsy value to disable
@@ -35,6 +35,7 @@ module.exports = {
         '.appcache'  : true,
         '.coffee'    : true,
         '.css'       : true,
+        '.less'      : true,
         '.eot'       : true,
         '.geojson'   : true,
         '.handlebars': true,
